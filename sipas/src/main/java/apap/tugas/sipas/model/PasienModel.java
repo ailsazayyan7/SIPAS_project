@@ -1,5 +1,6 @@
 package apap.tugas.sipas.model;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -7,7 +8,6 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name="PASIEN")
@@ -34,6 +34,7 @@ public class PasienModel implements Serializable{
     private String nik;
 
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "tanggal_lahir", nullable = false)
     private Date tanggal_lahir;
 
@@ -43,8 +44,9 @@ public class PasienModel implements Serializable{
     private String tempat_lahir;
 
     @NotNull
+    @Size(max=255)
     @Column(name = "jenis_kelamin", nullable = false)
-    private Integer jenis_kelamin;
+    private String jenis_kelamin;
 
     public long getId() {
         return id;
@@ -94,24 +96,46 @@ public class PasienModel implements Serializable{
         this.tempat_lahir = tempat_lahir;
     }
 
-    public Integer getJenis_kelamin() {
+    public String getJenis_kelamin() {
         return jenis_kelamin;
     }
 
-    public void setJenis_kelamin(Integer jenis_kelamin) {
+    public void setJenis_kelamin(String jenis_kelamin) {
         this.jenis_kelamin = jenis_kelamin;
     }
 
 
-    @ManyToMany(mappedBy = "listPasienDiagnosis")
-    private List<DiagnosisModel> listDiagnosisPenyakit;
-
     @ManyToMany(mappedBy = "listPasienAsuransi")
-    private List<AsuransiModel> listAsuransi;
+    List<AsuransiModel> listAsuransi;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_emergency_contact", referencedColumnName = "id")
-    private EmergencyContactModel emergencyContact;
+    EmergencyContactModel emergencyContact;
 
+    @OneToMany(mappedBy = "pasien")
+    List<PasienDiagnosisPenyakitModel> pasienDiagnosisPenyakit;
 
+    public List<AsuransiModel> getListAsuransi() {
+        return listAsuransi;
+    }
+
+    public void setListAsuransi(List<AsuransiModel> listAsuransi) {
+        this.listAsuransi = listAsuransi;
+    }
+
+    public EmergencyContactModel getEmergencyContact() {
+        return emergencyContact;
+    }
+
+    public void setEmergencyContact(EmergencyContactModel emergencyContact) {
+        this.emergencyContact = emergencyContact;
+    }
+
+    public List<PasienDiagnosisPenyakitModel> getPasienDiagnosisPenyakit() {
+        return pasienDiagnosisPenyakit;
+    }
+
+    public void setPasienDiagnosisPenyakit(List<PasienDiagnosisPenyakitModel> pasienDiagnosisPenyakit) {
+        this.pasienDiagnosisPenyakit = pasienDiagnosisPenyakit;
+    }
 }

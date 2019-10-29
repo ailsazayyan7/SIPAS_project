@@ -53,11 +53,7 @@ public class DiagnosisModel {
         this.kode = kode;
     }
 
-    @ManyToMany
-    @JoinTable(
-            name = "PASIEN_DIAGNOSIS_PENYAKIT",
-            joinColumns = @JoinColumn(name = "id_diagnosis_penyakit"),
-            inverseJoinColumns = @JoinColumn(name = "id_pasien"))
-    private List<PasienModel> listPasienDiagnosis;
+    @OneToMany(mappedBy = "diagnosis")
+    List<PasienDiagnosisPenyakitModel> pasienDiagnosisPenyakit;
 
 }

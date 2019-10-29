@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title> Tambah Pasien </title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+
+
+<h3> Tambah Pasien </h3>
+<form th:action="@{/pasien/tambah}" th:object="${pasien}" method="POST">
+
+    <div class="form-group row">
+        <label for="inputNama" class="col-sm-2 col-form-label">Nama</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputNama" placeholder="Nama" name="nama">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputNIK" class="col-sm-2 col-form-label">NIK</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputNIK" placeholder="NIK" name="nik">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="inputGender" class="col-sm-2 col-form-label">Jenis Kelamin</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="inputGender" name="jenis_kelamin">
+                <option>Laki-laki</option>
+                <option>Perempuan</option>
+            </select>
+        </div>
+    </div>
+<!--    <div class="form-group row">
+        <label for="tanggalLahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+        <div class="col-sm-10">
+            <input type="date" class="form-control" id="tanggalLahir" placeholder="dd/mm/yyyy" name="tanggal_lahir">
+        </div>
+    </div>-->
+
+    <div class="form-group row">
+        <label for="inputTempatLahir" class="col-sm-2 col-form-label">Tempat Lahir</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputTempatLahir" placeholder="Kota" name="tempat_lahir">
+        </div>
+    </div>
+
+
+
+
+  <!--  Nama: <br>
+    <input type="text" name="nama" />
+    <br>
+    NIK: <br>
+    <input type="text" name="nik" />
+    <br>
+    <label for="sel1">Jenis Kelamin:</label>
+    <select class="form-control" id="sel1" name="">
+        <option>Perempuan</option>
+        <option>Laki-laki</option>
+    </select>-->
+
+    <button type="submit"> Submit </button>
+</form>
+</body>
+</html>

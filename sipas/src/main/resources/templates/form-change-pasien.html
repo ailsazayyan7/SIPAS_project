@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title> Tambah Pasien </title>
+
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+
+
+<h3> Ubah Pasien </h3>
+<form th:action="@{/pasien/ubah/{pasien.nik}}" th:object="${pasien}" method="POST">
+
+    Nama: <br>
+    <input type="text" name="nama" th:value=*{nama}/>
+    <br>
+    NIK: <br>
+    <input type="text" name="nik" th:value="*{nik}"/>
+    <br>
+    <label for="sel1">Jenis Kelamin:</label>
+    <select class="form-control" id="sel1" name="jenis_kelamin" th:value="*{jenis_kelamin}">
+        <option>Perempuan</option>
+        <option>Laki-laki</option>
+    </select>
+    Tanggal Lahir: <br>
+    <input type="date" name="tanggal_lahir" th:value="*{tanggal_lahir}"/>
+    <br>
+    Tempat Lahir: <br>
+    <input type="text" name="tempat_lahir" th:value="*{tempat_lahir}"/>
+    <br>
+
+    <button type="submit"> Submit </button>
+</form>
+</body>
+</html>

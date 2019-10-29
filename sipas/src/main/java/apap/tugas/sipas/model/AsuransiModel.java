@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="asuransi")
+@Table(name="ASURANSI")
 public class AsuransiModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
-@Table(name="emergencyContact")
+@Table(name="EMERGENCY_CONTACT")
 
 public class EmergencyContactModel {
     @Id
