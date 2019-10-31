@@ -56,4 +56,11 @@ public class DiagnosisModel {
     @OneToMany(mappedBy = "diagnosis")
     List<PasienDiagnosisPenyakitModel> pasienDiagnosisPenyakit;
 
+    public List<PasienDiagnosisPenyakitModel> getPasienDiagnosisPenyakit() {
+        return pasienDiagnosisPenyakit;
+    }
+
+    public void setPasienDiagnosisPenyakit(List<PasienDiagnosisPenyakitModel> pasienDiagnosisPenyakit) {
+        this.pasienDiagnosisPenyakit = pasienDiagnosisPenyakit;
+    }
 }

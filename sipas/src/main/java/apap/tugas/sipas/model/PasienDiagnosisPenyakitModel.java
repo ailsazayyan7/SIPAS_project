@@ -3,7 +3,7 @@ package apap.tugas.sipas.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 @Table (name = "PASIEN_DIAGNOSIS_PENYAKIT")
@@ -39,4 +39,20 @@ public class PasienDiagnosisPenyakitModel {
     @ManyToOne
     @JoinColumn(name = "id_diagnosis_penyakit")
     DiagnosisModel diagnosis;
+
+    public PasienModel getPasien() {
+        return pasien;
+    }
+
+    public void setPasien(PasienModel pasien) {
+        this.pasien = pasien;
+    }
+
+    public DiagnosisModel getDiagnosis() {
+        return diagnosis;
+    }
+
+    public void setDiagnosis(DiagnosisModel diagnosis) {
+        this.diagnosis = diagnosis;
+    }
 }

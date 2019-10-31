@@ -55,4 +55,11 @@ public class AsuransiModel {
             inverseJoinColumns = @JoinColumn(name = "id_pasien"))
     private List<PasienModel> listPasienAsuransi;
 
+    public List<PasienModel> getListPasienAsuransi() {
+        return listPasienAsuransi;
+    }
+
+    public void setListPasienAsuransi(List<PasienModel> listPasienAsuransi) {
+        this.listPasienAsuransi = listPasienAsuransi;
+    }
 }
